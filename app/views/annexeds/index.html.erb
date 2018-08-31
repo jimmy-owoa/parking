@@ -9,7 +9,6 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:address) %></th>
       <th><%= model_class.human_attribute_name(:leader) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,7 +19,6 @@
         <td><%= annexed.name %></td>
         <td><%= annexed.address %></td>
         <td><%= annexed.leader %></td>
-        <td><%=l annexed.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       annexed_path(annexed), :class => 'btn btn-default btn-xs' %>
