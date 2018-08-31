@@ -32,10 +32,12 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li><%= link_to "Cars", cars_path, class: 'nav-link'  %></li>
-        <li><%= link_to "Owners", owners_path , class: 'nav-link' %></li>
-        <li><%= link_to "Annexeds", annexeds_path , class: 'nav-link' %></li>
-        <li class="nav-item"><%= link_to "Brands", brands_path , class: 'nav-link' %></li>
         <% if user_signed_in? %>
+          <% if current_user.is_admin? %>
+            <li><%= link_to "Owners", owners_path , class: 'nav-link' %></li>
+            <li><%= link_to "Annexeds", annexeds_path , class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to "Brands", brands_path , class: 'nav-link' %></li>
+          <% end %>
         <li><%= link_to "Salir", destroy_user_session_path, method: :delete, class: 'nav-link'%></li>
         <% end %>
       </ul>
