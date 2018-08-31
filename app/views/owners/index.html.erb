@@ -20,7 +20,7 @@
         <td><%= owner.name %></td>
         <td><%= owner.lastname %></td>
         <td><%= owner.phone %></td>
-        <td><%= owner.annexed_id %></td>
+        <td><%= Annexed.find_by_id(owner.annexed_id).name %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       owner_path(owner), :class => 'btn btn-default btn-xs' %>

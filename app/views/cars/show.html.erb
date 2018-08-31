@@ -9,9 +9,9 @@
   <dt><strong><%= model_class.human_attribute_name(:color) %>:</strong></dt>
   <dd><%= @car.color %></dd>
   <dt><strong><%= model_class.human_attribute_name(:owner_id) %>:</strong></dt>
-  <dd><%= @car.owner_id %></dd>
+  <dd><%= Owner.find_by_id(@car.owner_id).name + ' ' + Owner.find_by_id(@car.owner_id).lastname %></dd>
   <dt><strong><%= model_class.human_attribute_name(:brand_id) %>:</strong></dt>
-  <dd><%= @car.brand_id %></dd>
+  <dd><%= Brand.find_by_id(@car.brand_id).name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:model) %>:</strong></dt>
   <dd><%= @car.model %></dd>
 </dl>

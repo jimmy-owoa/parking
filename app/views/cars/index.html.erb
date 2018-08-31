@@ -8,12 +8,13 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:brand_id) %></th>
+      <th><%= model_class.human_attribute_name(:model) %></th>
+      <th><%= model_class.human_attribute_name(:owner_id) %></th>
       <th><%= model_class.human_attribute_name(:plate) %></th>
       <th><%= model_class.human_attribute_name(:color) %></th>
-      <th><%= model_class.human_attribute_name(:owner_id) %></th>
-      <th><%= model_class.human_attribute_name(:brand_id) %></th>
       <th><%= model_class.human_attribute_name(:annexed) %></th>
-      <th><%= model_class.human_attribute_name(:model) %></th>
+
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -21,12 +22,13 @@
     <% @cars.each do |car| %>
       <tr>
         <td><%= link_to car.id, car_path(car) %></td>
+        <td><%= Brand.find_by_id(car.brand_id).name %></td>
+        <td><%= car.model %></td>
+        <td><%= Owner.find_by_id(car.owner_id).name + ' ' + Owner.find_by_id(car.owner_id).lastname  %></td>
         <td><%= car.plate %></td>
         <td><%= car.color %></td>
-        <td><%= Owner.find_by_id(car.owner_id).name + ' ' + Owner.find_by_id(car.owner_id).lastname  %></td>
-        <td><%= Brand.find_by_id(car.brand_id).name %></td>
         <td><%= Annexed.find_by_id(car.owner.annexed_id).name %></td>
-        <td><%= car.model %></td>
+
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       car_path(car), :class => 'btn btn-default btn-xs' %>

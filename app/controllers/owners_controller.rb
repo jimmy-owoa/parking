@@ -12,6 +12,7 @@ class OwnersController < ApplicationController
   def show
   end
 
+
   # GET /owners/new
   def new
     @owner = Owner.new
