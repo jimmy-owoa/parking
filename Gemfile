@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem "twitter-bootstrap-rails", :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem "paperclip", "~> 6.0.0"
+gem 'awesome_print'
 
 
 group :development, :test do
