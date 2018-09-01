@@ -1,3 +1,4 @@
+
 <%- model_class = Car -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
@@ -11,6 +12,7 @@
       <th><%= model_class.human_attribute_name(:brand_id) %></th>
       <th><%= model_class.human_attribute_name(:model) %></th>
       <th><%= model_class.human_attribute_name(:owner_id) %></th>
+      <th><%= model_class.human_attribute_name(:phone) %></th>
       <th><%= model_class.human_attribute_name(:plate) %></th>
       <th><%= model_class.human_attribute_name(:color) %></th>
       <th><%= model_class.human_attribute_name(:annexed) %></th>
@@ -25,6 +27,7 @@
         <td><%= Brand.find_by_id(car.brand_id).name %></td>
         <td><%= car.model %></td>
         <td><%= Owner.find_by_id(car.owner_id).name + ' ' + Owner.find_by_id(car.owner_id).lastname  %></td>
+        <td><%= Owner.find_by_id(car.owner_id).phone %></td>
         <td><%= car.plate %></td>
         <td><%= car.color %></td>
         <td><%= Annexed.find_by_id(car.owner.annexed_id).name %></td>

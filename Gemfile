@@ -38,6 +38,7 @@ gem "twitter-bootstrap-rails", :git => 'git://github.com/seyhunak/twitter-bootst
 gem "paperclip", "~> 6.0.0"
 gem 'awesome_print'
 gem 'devise'
+gem 'gentelella-rails'
 
 
 group :development, :test do
