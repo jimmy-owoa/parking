@@ -17,9 +17,11 @@
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- jQuery custom content scroller -->
     <link href="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
-
+    <%= csrf_meta_tags %>
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <%= javascript_include_tag "application" %>
+
   </head>
 
   <body class="nav-md">
@@ -55,19 +57,25 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   <li><%=link_to 'Home', root_path%></li>
-
-                  <li><a><i class="fa fa-edit"></i><%= 'Add' %> <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <% if user_signed_in? %>
-                      <li><%=link_to 'Cars', cars_path%></li>
-                        <% if current_user.is_admin? %>
-                          <li><%= link_to "Owners", owners_path %></li>
-                          <li><%= link_to "Annexeds", annexeds_path %></li>
-                          <li class="nav-item"><%= link_to "Brands", brands_path%></li>
-                        <% end %>
-                      <% end %>
-                    </ul>
+                  <% if user_signed_in? %>
+                    <% if current_user.is_admin? %>
+                    <li><a><i class="fa fa-edit"></i><%= 'Add' %> <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li><%=link_to 'Cars', cars_path%></li>
+                        <li><%= link_to "Owners", owners_path %></li>
+                        <li><%= link_to "Annexeds", annexeds_path %></li>
+                        <li class="nav-item"><%= link_to "Brands", brands_path%></li>
+                      </ul>
+                    </li>
+                    <% else %>
+                    <li><a><i class="fa fa-eye"></i><%= 'Show' %> <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li><%=link_to 'Cars', cars_path%></li>
+                      </ul>
+                    </li>
+                    <% end %>
                   </li>
+                  <% end %>
                   <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="general_elements.html">General Elements</a></li>
@@ -152,18 +160,7 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
+              <%= link_to "", destroy_user_session_path, method: :delete, class:'glyphicon glyphicon-off'%>
             </div>
             <!-- /menu footer buttons -->
           </div>
@@ -177,18 +174,21 @@
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
               </div>
 
+              <% if user_signed_in? %>
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <img src="images/img.jpg" alt=""><%= current_user.email %>
                     <span class=" fa fa-angle-down"></span>
                   </a>
+
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="javascript:;"> Profile</a></li>
                     <li><%= link_to "Salir", destroy_user_session_path, method: :delete%></li>
                   </ul>
                 </li>
               </ul>
+              <% end %>
             </nav>
           </div>
         </div>
