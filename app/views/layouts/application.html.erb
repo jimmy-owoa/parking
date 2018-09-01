@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>Parking | IEP ÑUÑOA </title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
         <div class="col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Parking</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -43,7 +43,7 @@
               <div class="profile_info">
                 <% if user_signed_in? %>
                 <span>Welcome,</span>
-                <h2><%= current_user.email %></h2>
+                <h2><%= current_user.name %></h2>
                 <% end %>
               </div>
             </div>
@@ -102,7 +102,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt=""><%= current_user.email %>
+                    <img src="images/img.jpg" alt=""><%= current_user.name %>
                     <span class=" fa fa-angle-down"></span>
                   </a>
 

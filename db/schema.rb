@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_31_221143) do
+ActiveRecord::Schema.define(version: 2018_09_01_065858) do
 
   create_table "annexeds", force: :cascade do |t|
     t.string "name"
