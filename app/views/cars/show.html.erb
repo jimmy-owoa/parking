@@ -23,7 +23,7 @@
             "/?text=Necesitamos%20que%20mueva%20su%20vehiculo%20" + Brand.find_by_id(@car.brand_id).name + ' ' + @car.model + "%20Patente:%20" + @car.plate +
             "%20con%20urgencia.%20Gracias",
             target: "_blank", class:'btn btn-primary'%>
-<%= link_to 'Llamar', Owner.find_by_id(@car.owner_id).phone, class:'btn btn-success' %><br><br>
+<%= link_to 'Llamar', "tel:#{Owner.find_by_id(@car.owner_id).phone}", class:'btn btn-success' %><br><br>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               cars_path, :class => 'btn btn-default'  %>
