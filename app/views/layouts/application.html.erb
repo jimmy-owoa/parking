@@ -25,118 +25,124 @@
   </head>
 
   <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3 left_col menu_fixed">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <span><%=link_to 'Parking IEP', root_path, class:'site_title'%></span></a>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="/images/img.png" alt="..." class="img-circle profile_img">
+    <section>
+      <div class="container body">
+        <div class="main_container">
+          <div class="col-md-3 left_col menu_fixed">
+            <div class="left_col scroll-view">
+              <div class="navbar nav_title" style="border: 0;">
+                <span><%=link_to 'Parking IEP', root_path, class:'site_title'%></span></a>
               </div>
-              <div class="profile_info">
-                <% if user_signed_in? %>
-                <span>Welcome,</span>
-                <h2><%= current_user.name %></h2>
-                <% end %>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
 
-            <br />
+              <div class="clearfix"></div>
 
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><%=link_to 'Home', root_path%></li>
+              <!-- menu profile quick info -->
+              <div class="profile clearfix">
+                <div class="profile_pic">
+                  <img src="/images/img.png" alt="..." class="img-circle profile_img">
+                </div>
+                <div class="profile_info">
                   <% if user_signed_in? %>
-                    <% if current_user.is_admin? %>
-                    <li><a><i class="fa fa-edit"></i><%= 'Add' %> <span class="fa fa-chevron-down"></span></a>
-                      <ul class="nav child_menu">
-                        <li><%=link_to 'Cars', cars_path%></li>
-                        <li><%= link_to "Owners", owners_path %></li>
-                        <li><%= link_to "Annexeds", annexeds_path %></li>
-                        <li class="nav-item"><%= link_to "Brands", brands_path%></li>
-                      </ul>
-                    </li>
-                    <% else %>
-                    <li><a><i class="fa fa-eye"></i><%= 'Show' %> <span class="fa fa-chevron-down"></span></a>
-                      <ul class="nav child_menu">
-                        <li><%=link_to 'Cars', cars_path%></li>
-                      </ul>
+                  <span>Welcome,</span>
+                  <h2><%= current_user.name %></h2>
+                  <% end %>
+                </div>
+              </div>
+              <!-- /menu profile quick info -->
+
+              <br />
+
+              <!-- sidebar menu -->
+              <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                <div class="menu_section">
+                  <h3>General</h3>
+                  <ul class="nav side-menu">
+                    <li><%=link_to 'Home', root_path%></li>
+                    <% if user_signed_in? %>
+                      <% if current_user.is_admin? %>
+                      <li><a><i class="fa fa-edit"></i><%= 'Add' %> <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><%=link_to 'Cars', cars_path%></li>
+                          <li><%= link_to "Owners", owners_path %></li>
+                          <li><%= link_to "Annexeds", annexeds_path %></li>
+                          <li class="nav-item"><%= link_to "Brands", brands_path%></li>
+                        </ul>
+                      </li>
+                      <% else %>
+                      <li><a><i class="fa fa-eye"></i><%= 'Show' %> <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><%=link_to 'Cars', cars_path%></li>
+                        </ul>
+                      </li>
+                      <% end %>
                     </li>
                     <% end %>
+                    </ul>
+                </div>
+
+              </div>
+              <!-- /sidebar menu -->
+
+              <!-- /menu footer buttons -->
+              <div class="sidebar-footer hidden-small">
+                <%= link_to "", destroy_user_session_path, method: :delete, class:'glyphicon glyphicon-off'%>
+              </div>
+              <!-- /menu footer buttons -->
+            </div>
+          </div>
+
+          <!-- top navigation -->
+          <div class="top_nav">
+            <div class="nav_menu">
+              <nav>
+                <div class="nav toggle">
+                  <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                </div>
+
+                <% if user_signed_in? %>
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                      <img src="images/img.jpg" alt=""><%= current_user.name %>
+                      <span class=" fa fa-angle-down"></span>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                      <li><a href="javascript:;"> Profile</a></li>
+                      <li><%= link_to "Salir", destroy_user_session_path, method: :delete%></li>
+                    </ul>
                   </li>
-                  <% end %>
-                  </ul>
+                </ul>
+                <% end %>
+              </nav>
+            </div>
+          </div>
+          <!-- /top navigation -->
+
+          <!-- page content -->
+          <div class="right_col" role="main">
+            <div class="">
+              <div class="page-title">
+              <%= yield %>
               </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <%= link_to "", destroy_user_session_path, method: :delete, class:'glyphicon glyphicon-off'%>
-            </div>
-            <!-- /menu footer buttons -->
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
-
-              <% if user_signed_in? %>
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt=""><%= current_user.name %>
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
-                    <li><%= link_to "Salir", destroy_user_session_path, method: :delete%></li>
-                  </ul>
-                </li>
-              </ul>
-              <% end %>
-            </nav>
-          </div>
-        </div>
-        <!-- /top navigation -->
-
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-            <%= yield %>
             </div>
           </div>
-        </div>
-        <!-- /page content -->
+          <!-- /page content -->
 
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-           Creado con <i class="fa fa-heart fa-btn text-danger"></i> por <%=link_to 'Jeremías Gutiérrez', 'https://www.linkedin.com/in/jeremias-gutierrez-araya-490235101/'%> | Versión BETA
-          </div>
-          <div class="clearfix"></div>
-        </footer>
+          <!-- footer content -->
+        </section>
+        </div>
+        <section>
+          <br><br><br><br><br><br><br><br><br><br>
+          <footer>
+            <div class="pull-right">
+             Creado con <i class="fa fa-heart fa-btn text-danger"> </i> por <%=link_to 'Jeremías Gutiérrez', 'https://www.linkedin.com/in/jeremias-gutierrez-araya-490235101/'%> | Versión BETA
+            </div>
+            <div class="clearfix"></div>
+          </footer>
+        </section>
         <!-- /footer content -->
-      </div>
+
     </div>
 
     <!-- jQuery -->
