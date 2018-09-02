@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_09_01_065858) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "annexeds", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -31,8 +34,8 @@ ActiveRecord::Schema.define(version: 2018_09_01_065858) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "owner_id"
-    t.integer "brand_id"
+    t.bigint "owner_id"
+    t.bigint "brand_id"
     t.string "model"
     t.index ["brand_id"], name: "index_cars_on_brand_id"
     t.index ["owner_id"], name: "index_cars_on_owner_id"
@@ -44,11 +47,30 @@ ActiveRecord::Schema.define(version: 2018_09_01_065858) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "annexed_id"
+    t.bigint "annexed_id"
     t.index ["annexed_id"], name: "index_owners_on_annexed_id"
   end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'bool' for column 'is_admin'
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "is_admin"
+    t.string "name"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
 
+  add_foreign_key "cars", "brands"
+  add_foreign_key "cars", "owners"
+  add_foreign_key "owners", "annexeds"
 end
