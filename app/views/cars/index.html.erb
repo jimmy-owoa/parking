@@ -49,9 +49,11 @@
     <% end %>
   </tbody>
 </table>
-<br><br><br><br><br><br>
+
 <% if current_user.is_admin? %>
   <%= link_to t('.new', :default => t("helpers.links.new")),
               new_car_path,
               :class => 'btn btn-primary' %>
 <% end %>
+
+<br><br><br><br><br><br>
