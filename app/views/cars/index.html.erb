@@ -22,15 +22,18 @@
   </thead>
   <tbody>
     <% @cars.each do |car| %>
+      <% owner = car.owner %>
+      <% brand = car.brand %>
+      <% annexed = car.owner.annexed %>
       <tr>
         <td><%= link_to car.id, car_path(car) %></td>
-        <td><%= Brand.find_by_id(car.brand_id).name %></td>
+        <td><%= car.brand.name %></td>
         <td><%= car.model %></td>
-        <td><%= Owner.find_by_id(car.owner_id).name + ' ' + Owner.find_by_id(car.owner_id).lastname  %></td>
-        <td><%= Owner.find_by_id(car.owner_id).phone %></td>
+        <td><%= owner.full_name  %></td>
+        <td><%= car.owner.phone %></td>
         <td><%= car.plate %></td>
         <td><%= car.color %></td>
-        <td><%= Annexed.find_by_id(car.owner.annexed_id).name %></td>
+        <td><%= annexed.name %></td>
 
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
