@@ -1,10 +1,17 @@
 class CarsController < ApplicationController
+  skip_before_action :authenticate_user!
   before_action :set_car, only: [:show, :edit, :update, :destroy]
-
   # GET /cars
   # GET /cars.json
+
   def index
     @cars = Car.all
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: { cars: Car.api_json }
+      }
+    end
   end
 
   # GET /cars/1
