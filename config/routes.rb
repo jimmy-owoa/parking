@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, path: '', path_names: {
+             sign_in: 'login'}, controllers: {
+             sessions: 'users/sessions'
+            }
   resources :brands
   resources :annexeds
   resources :owners

@@ -5,6 +5,5 @@ export const routes = [
   {
     path: '/cars',
     component: CarsListContainer,
-    exact: true
   }
 ]
