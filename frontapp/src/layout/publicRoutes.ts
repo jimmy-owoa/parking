@@ -1,7 +1,13 @@
 import LoginContainer from '../Auth/containers/LoginContainer';
 import Parking from './Parking';
 
-export const routes = [
+interface IRoutes {
+  path: string,
+  component: any,
+  exact?: boolean
+}
+
+export const routes:IRoutes[] = [
   {
     path: '/login',
     component: LoginContainer,
