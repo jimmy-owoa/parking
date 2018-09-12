@@ -32,3 +32,4 @@
 /config/master.key
 
 /frontapp/node_modules/*
+/frontapp/package-lock.json
