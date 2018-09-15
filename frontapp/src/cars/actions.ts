@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../constants/api';
 
 import {
   CHANGE_COLOR_CAR,
@@ -23,7 +23,7 @@ export const addCar = (car:any) => {
 
 export const getCarList = () => {
   return dispatch => {
-    axios.get("/cars.json")
+    axios.get("/cars")
       .then(response => {
         let { data } = response;
         let { cars } = data;

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../constants/api';
 import { CHANGE_AUTH_FORM } from '../../constants/index';
 
 export const changeAuthForm = (name, value) => {
@@ -12,14 +12,15 @@ export const changeAuthForm = (name, value) => {
 
 export const submitForm = (auth) => {
   return dispatch => {
-    axios.post('/login', {user: auth})
+    axios({url: '/api/sessions', method: 'post', data: {user: auth}})
       .then(response => {
         let { data } = response;
         let { rootPath } = data;
         location.href = rootPath;
       })
       .catch(error => {
-
+        console.log(error);
+        alert();
       })
   }
 }

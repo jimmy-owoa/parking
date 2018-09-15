@@ -8,7 +8,13 @@ interface IRoutes {
 
 export const routes:IRoutes[] = [
   {
+    path: '/',
+    component: CarsListContainer,
+    exact: true
+  },
+  {
     path: '/cars',
     component: CarsListContainer,
+    exact: true
   }
 ]

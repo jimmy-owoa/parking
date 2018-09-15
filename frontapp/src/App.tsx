@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import PublicParking from './layout/PublicParking';
+import Parking from './layout/Parking';
 
 class App extends React.Component<any,any> {
   constructor(props) {
@@ -9,7 +9,7 @@ class App extends React.Component<any,any> {
 
   render() {
     return(
-      <PublicParking />
+      <Parking />
     );
   }
 }
