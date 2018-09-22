@@ -41,6 +41,8 @@ gem 'jquery-rails'
 
 gem 'haml-rails'
 gem 'haml'
+gem 'will_paginate', '~> 3.1.0'
+
 
 
 group :development, :test do

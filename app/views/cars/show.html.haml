@@ -35,11 +35,11 @@
 = link_to 'Llamar', "tel:#{Owner.find_by_id(@car.owner_id).phone}", class:'btn btn-success'
 %br/
 %br/
-= link_to t('.back', :default => t("helpers.links.back")), |
-  cars_path, :class => 'btn btn-default'                   |
+= link_to t('.back', :default => t("helpers.links.back")),
+  cars_path, :class => 'btn btn-default'
 - if current_user.is_admin?
-  = link_to t('.edit', :default => t("helpers.links.edit")), |
-    edit_car_path(@car), :class => 'btn btn-default'         |
+  = link_to t('.edit', :default => t("helpers.links.edit")),
+    edit_car_path(@car), :class => 'btn btn-default'
   = link_to t('.destroy', :default => t("helpers.links.destroy")),                                               |
     car_path(@car),                                                                                              |
     :method => 'delete',                                                                                         |
