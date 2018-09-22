@@ -1,0 +1,7 @@
+- if current_user.is_admin?
+  - model_class = Annexed
+  .page-header
+    %h1= t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize
+  = render :partial => 'form'
+- else
+  %h1= 'You have not permission for be here! Get out :)'

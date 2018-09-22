@@ -28,6 +28,8 @@
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
+/config/database.yml
 /config/master.key
 
-/config/database.yml
+/frontapp/node_modules/*
+/frontapp/package-lock.json

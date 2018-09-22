@@ -1,0 +1,21 @@
+
+%html
+  %head
+    %meta{:"http-equiv" => "Content-Type", content: "text/html; charset=UTF-8"}
+    %meta{charset: "utf-8"}
+    %meta{ :"http-equiv" => "X-UA-Compatible", content: "IE=edge"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+
+    %title Parking | IEP ÑUÑOA
+
+    = stylesheet_link_tag 'application', media: 'all'
+    = csrf_meta_tags
+
+  %body.grey.lighten-4{style: "padding: 0"}
+    .center= image_tag asset_url('Iep_logo.png'), class: "iep_image"
+    .container= yield
+
+    = javascript_include_tag "application"
+    - flash.each do |type, message|
+      - _type = type.gsub("alert", "red").gsub('notice', 'green')
+      = javascript_tag "Materialize.toast('#{message}', 4000, '#{_type}');"
