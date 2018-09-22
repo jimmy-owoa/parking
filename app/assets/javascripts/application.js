@@ -17,6 +17,6 @@
 //= require_tree .
 
 $('.button-collapse').sideNav({
-  menuWidth: 300
+  menuWidth: 200
 }
 );
