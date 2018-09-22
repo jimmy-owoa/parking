@@ -1,0 +1,30 @@
+- model_class = Car
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:plate)
+      %th= t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @cars.each do |car|
+      %tr
+        %td= link_to car.id, car_path(car)
+        %td= car.plate
+        %td
+          - if current_user.is_admin?
+            = link_to t('.show', :default => t("helpers.links.show")),
+              car_path(car), :class => 'btn btn-default btn-xs'
+            = link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_car_path(car), :class => 'btn btn-default btn-xs'
+            = link_to t('.destroy', :default => t("helpers.links.destroy")),                                               |
+              car_path(car),                                                                                       |
+              :method => :delete,                                                                                          |
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, |
+              :class => 'btn btn-xs btn-danger'
+= will_paginate @cars                                                                          |
+- if current_user.is_admin?
+  = link_to t('.new', :default => t("helpers.links.new")),
+    new_car_path,
+    :class => 'btn btn-primary'
