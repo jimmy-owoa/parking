@@ -22,13 +22,9 @@
             %i.material-icons menu
           = link_to model_class.model_name.human(count: 2), model_class, class: 'brand-logo'
           %ul.nav-mobile.right.hide-on-med-and-down
-            %li
-              %a Sass
-            %li
-              %a Components
-            %li
-              %a JavaScript
     %main.container= yield
+    = link_to [:new, model_class.to_s.underscore.to_sym], class: "btn-floating btn-large btn-android waves-effect waves-light" do
+      = material_icon.add
     = javascript_include_tag "application"
     %script{:crossorigin => "anonymous", :integrity => "sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49", :src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"}
     %script{:src => "https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"}

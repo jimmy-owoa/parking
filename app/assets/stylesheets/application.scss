@@ -5,7 +5,13 @@ $secondary-color: color("red", "darken-1") !default;
 @import 'material_icons';
 
 header, main, footer {
-  padding-left: 300px;
+  padding-left: 200px;
+}
+
+.btn-android {
+  position: fixed;
+  right: 2em !important;
+  bottom: 2em !important;
 }
 
 @media only screen and (max-width : 992px) {
