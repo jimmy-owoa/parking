@@ -1,9 +1,0 @@
-<% if current_user.is_admin? %>
-  <%- model_class = Car -%>
-  <div class="page-header">
-    <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
-  </div>
-  <%= render :partial => 'form' %>
-<% else %>
-  <h1><%= 'You have not permission for be here! Get out :)' %></h1>
-<% end %>

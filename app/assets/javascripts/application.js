@@ -14,5 +14,4 @@
 //= require rails-ujs
 //= require activestorage
 //= require materialize
-//= require frontApp
 //= require_tree .

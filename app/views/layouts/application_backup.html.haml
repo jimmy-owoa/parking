@@ -1,0 +1,54 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title= content_for?(:title) ? yield(:title) : "Parking"
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application'
+    / For third-generation iPad with high-resolution Retina display:
+    %link{:crossorigin => "anonymous", :href => "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css", :integrity => "sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO", :rel => "stylesheet"}/
+    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css", :rel => "stylesheet", :type => "text/css"}/
+    = javascript_include_tag "application"
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
+  %body
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      = link_to "Parking", root_path, class: 'navbar-brand'
+      %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNav", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      #navbarNav.collapse.navbar-collapse
+        %ul.navbar-nav
+          %li= link_to "Cars", cars_path, class: 'nav-link'
+          - if user_signed_in?
+            - if current_user.is_admin?
+              %li= link_to "Owners", owners_path , class: 'nav-link'
+              %li= link_to "Annexeds", annexeds_path , class: 'nav-link'
+              %li.nav-item= link_to "Brands", brands_path , class: 'nav-link'
+            %li= link_to "Salir", destroy_user_session_path, method: :delete, class: 'nav-link'
+    .container
+      %p.notice= notice
+      %p.alert= alert
+      .row
+        .col-lg-9
+          = bootstrap_flash
+          %br/
+          = yield
+      / /row
+      %footer
+        %p © Company 2018
+    / /container
+  %script{:crossorigin => "anonymous", :integrity => "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo", :src => "https://code.jquery.com/jquery-3.3.1.slim.min.js"}
+  %script{:crossorigin => "anonymous", :integrity => "sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49", :src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"}
+  %script{:src => "https://code.jquery.com/jquery-3.3.1.js"}
+  %script{:src => "https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"}
+  %script{:src => "https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"}
+  :javascript
+    $(document).ready(function() {
+        $('#carsTable').DataTable();
+        autoFill: true;
+    } );
