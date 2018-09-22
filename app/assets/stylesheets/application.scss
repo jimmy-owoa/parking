@@ -2,6 +2,17 @@
 $primary-color: color("teal", "lighten-2") !default;
 $secondary-color: color("red", "darken-1") !default;
 @import 'materialize';
+@import 'material_icons';
+
+header, main, footer {
+  padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
 
 
 .btn-block {

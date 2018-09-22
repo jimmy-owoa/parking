@@ -15,3 +15,8 @@
 //= require activestorage
 //= require materialize
 //= require_tree .
+
+$('.button-collapse').sideNav({
+  menuWidth: 300
+}
+);

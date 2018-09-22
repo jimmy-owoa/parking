@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'materialize-sass'
+
+gem 'material_icons'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
