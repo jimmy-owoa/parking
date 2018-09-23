@@ -19,15 +19,15 @@
         %td= owner.phone
         %td= Annexed.find_by_id(owner.annexed_id).name
         %td
-          = link_to t('.show', :default => t("helpers.links.show")), |
-            owner_path(owner), :class => 'btn btn-default btn-xs'    |
-          = link_to t('.edit', :default => t("helpers.links.edit")),   |
-            edit_owner_path(owner), :class => 'btn btn-default btn-xs' |
+          = link_to t('.show', :default => t("helpers.links.show")),
+            owner_path(owner), :class => 'btn btn-default btn-xs'
+          = link_to t('.edit', :default => t("helpers.links.edit")),
+            edit_owner_path(owner), :class => 'btn btn-default btn-xs'
           = link_to t('.destroy', :default => t("helpers.links.destroy")),                                               |
             owner_path(owner),                                                                                           |
             :method => :delete,                                                                                          |
             :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, |
             :class => 'btn btn-xs btn-danger'                                                                            |
-= link_to t('.new', :default => t("helpers.links.new")), |
-  new_owner_path,                                        |
-  :class => 'btn btn-primary'                            |
+= link_to t('.new', :default => t("helpers.links.new")),
+  new_owner_path,
+  :class => 'btn btn-primary'                            

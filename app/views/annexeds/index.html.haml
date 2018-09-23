@@ -18,16 +18,16 @@
         %td= annexed.leader
         %td
           - if current_user.is_admin?
-            = link_to t('.show', :default => t("helpers.links.show")),  |
-              annexed_path(annexed), :class => 'btn btn-default btn-xs' |
-            = link_to t('.edit', :default => t("helpers.links.edit")),       |
-              edit_annexed_path(annexed), :class => 'btn btn-default btn-xs' |
-            = link_to t('.destroy', :default => t("helpers.links.destroy")),                                               |
-              annexed_path(annexed),                                                                                       |
-              :method => :delete,                                                                                          |
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, |
+            = link_to t('.show', :default => t("helpers.links.show")),
+              annexed_path(annexed), :class => 'btn btn-default btn-xs'
+            = link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_annexed_path(annexed), :class => 'btn btn-default btn-xs'
+            = link_to t('.destroy', :default => t("helpers.links.destroy")),
+              annexed_path(annexed),
+              :method => :delete,
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-xs btn-danger'
-= will_paginate @cars                                                                 |
+= will_paginate @annexeds                                                                 |
 - if current_user.is_admin?
   = link_to t('.new', :default => t("helpers.links.new")),
     new_annexed_path,

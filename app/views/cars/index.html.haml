@@ -11,7 +11,7 @@
     - @cars.each do |car|
       %tr
         %td= link_to car.id, car_path(car)
-        %td= car.plate
+        %td= car.plate.upcase
         %td
           - if current_user.is_admin?
             = link_to t('.show', :default => t("helpers.links.show")),

@@ -2,7 +2,7 @@
 %html{:lang => "en"}
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    
+
     %meta{:charset => "utf-8"}/
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
@@ -11,10 +11,16 @@
     = csrf_meta_tags
   %body
     %ul#slide-out.side-nav.fixed
+  
+
       %li
-        %a First Sidebar Link
+        = link_to 'Cars', cars_path
       %li
-        %a Second Sidebar Link
+        = link_to 'Owners', owners_path
+      %li
+        = link_to 'Brands', brands_path
+      %li
+        = link_to 'Annexeds', annexeds_path
     %header
       %nav
         .nav-wrapper

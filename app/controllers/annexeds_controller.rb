@@ -4,7 +4,7 @@ class AnnexedsController < ApplicationController
   # GET /annexeds
   # GET /annexeds.json
   def index
-    @annexeds = Annexed.all
+    @annexeds = Annexed.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /annexeds/1
