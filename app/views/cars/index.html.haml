@@ -24,7 +24,3 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, |
               :class => 'btn btn-xs btn-danger'
 = will_paginate @cars                                                                           |
-- if current_user.is_admin?
-  = link_to t('.new', :default => t("helpers.links.new")),
-    new_car_path,
-    :class => 'btn btn-primary'
