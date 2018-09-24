@@ -2,7 +2,6 @@
 %html{:lang => "en"}
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-
     %meta{:charset => "utf-8"}/
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
@@ -11,8 +10,16 @@
     = csrf_meta_tags
   %body
     %ul#slide-out.side-nav.fixed
-
-
+      %li
+        .user-view
+          .background.teal.lighten-1
+          %a{:href => "#!user"}
+            %img.circle{:src => "/images/user.png"}/
+          %a{:href => "#!name"}
+            %span.white-text.name
+              = current_user.name
+            %span.white-text.email
+              = current_user.email
       %li
         = link_to 'Cars', cars_path
       %li
