@@ -45,6 +45,9 @@ gem 'haml-rails'
 gem 'haml'
 gem 'will_paginate', '~> 3.1.0'
 
+gem 'gon'
+gem 'rabl-rails'
+
 
 
 group :development, :test do

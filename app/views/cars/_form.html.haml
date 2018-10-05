@@ -25,6 +25,8 @@
     = f.label :brand_id, :class => 'control-label col-lg-2'
     .col-lg-10
       = f.select :brand_id, options_for_select(Brand.all.map{|i| [i.name, i.id]}), :class => 'form-control'
+      - unless @car.id.nil?
+        = link_to "Crear Marca", new_car_brand_path(@car), remote: true
   .form-group
     = f.label :model, :class => 'control-label col-lg-2'
     .col-lg-10

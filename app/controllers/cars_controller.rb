@@ -10,7 +10,10 @@ class CarsController < ApplicationController
       format.json {
         render json: { cars: Car.api_json }
       }
+      format.js
     end
+    gon.plates = Car.pluck(:plate).map { |plate| [plate, nil] }.to_h
+    gon.car_ids = Car.all.map { |car| [car.plate, car.id] }.to_h
   end
 
   # GET /cars/1

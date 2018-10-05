@@ -1,0 +1,19 @@
+= form_for [@car, @brand], :html => { :class => "form-horizontal brand" }, remote: true do |f|
+  .modal-content
+    - if @brand.errors.any?
+      #error_expl.panel.panel-danger
+      %h3.panel-title
+        .panel-heading
+          = pluralize(@brand.errors.count, "error")
+          prohibited this brand from being saved:
+        .panel-body
+          %ul
+            - @brand.errors.full_messages.each do |msg|
+              %li= msg
+    .form-group
+      = f.label :name, :class => 'control-label col-lg-2'
+      .col-lg-= f.text_field :name, :class => 'form-control'
+    .form-group
+      .col-lg-offset-2.col-lg-10
+  .modal-footer
+    = f.submit nil, :class => 'btn btn-primary'

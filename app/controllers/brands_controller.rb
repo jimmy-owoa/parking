@@ -1,5 +1,6 @@
 class BrandsController < ApplicationController
   before_action :set_brand, only: [:show, :edit, :update, :destroy]
+  before_action :set_car, only: [:create, :new]
 
   # GET /brands
   # GET /brands.json
@@ -15,6 +16,11 @@ class BrandsController < ApplicationController
   # GET /brands/new
   def new
     @brand = Brand.new
+    respond_to do |format|
+      format.html
+      format.json { render json: @brand }
+      format.js
+    end
   end
 
   # GET /brands/1/edit
@@ -25,14 +31,17 @@ class BrandsController < ApplicationController
   # POST /brands.json
   def create
     @brand = Brand.new(brand_params)
-
+    binding.pry
+    params[:car_id]
     respond_to do |format|
       if @brand.save
         format.html { redirect_to @brand, notice: 'Brand was successfully created.' }
         format.json { render :show, status: :created, location: @brand }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @brand.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -70,5 +79,9 @@ class BrandsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def brand_params
       params.require(:brand).permit(:name, :car_id)
+    end
+
+    def set_car
+      @car = Car.find params[:car_id]
     end
 end

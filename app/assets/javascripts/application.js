@@ -16,7 +16,31 @@
 //= require materialize
 //= require_tree .
 
-$('.button-collapse').sideNav({
-  menuWidth: 200
-}
-);
+// $(document).ready(function(){
+//   $('input.autocomplete').autocomplete({
+//     data: gon.plates,
+//     limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+//     onAutocomplete: function(val) {
+//        // Callback function when value is autcompleted.
+//        location.href = gon.path;
+//
+//     },
+//     minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+//   });
+// });
+
+
+$(document).ready(function(){
+  $('input.autocomplete').autocomplete({
+    data: gon.plates,
+    limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+    onAutocomplete: function(val) {
+      // Callback function when value is autcompleted
+      window.location.href = '/cars/'+ gon.car_ids[val]
+    },
+    minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+  });
+  $('.button-collapse').sideNav({
+    menuWidth: 200
+  });
+});
