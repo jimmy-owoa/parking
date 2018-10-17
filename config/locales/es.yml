@@ -30,6 +30,29 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
-  hello: "Hola mundo"
-  plate: "Patente"
-  owner_id: "Dueño"
+  activerecord:
+    models:
+      car: Vehículo
+      annexed: Anexo
+      owner: Dueño
+    attributes:
+      car:
+        plate: Patente
+        annexed: Anexo
+        owner_id: Dueño
+        car: Vehículo
+  helpers:
+    actions: Acciones
+    links:
+      show: Ver
+      edit: Editar
+      destroy: Eliminar
+      back: Volver
+      cancel: Cancelar
+    submit:
+      car:
+        update: Actualizar
+    label:
+      car:
+        brand_id: Marca
+        model: Modelo

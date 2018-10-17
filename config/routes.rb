@@ -4,15 +4,16 @@ Rails.application.routes.draw do
     sign_in: 'login'}, controllers: {
       sessions: 'users/sessions'
   }
-  resources :brands
-  resources :annexeds
-  resources :owners do
-    resources :cars
+  scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/, defaults: {locale: "es"} do
+    resources :brands
+    resources :annexeds
+    resources :owners do
+      resources :cars
+    end
+    resources :cars do
+      resources :brands, only: [:create, :new]
+    end
+    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    root to: 'cars#index'
   end
-  resources :cars do
-    resources :brands, only: [:create, :new]
-  end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'cars#index'
-
 end

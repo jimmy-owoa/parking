@@ -31,10 +31,10 @@ class BrandsController < ApplicationController
   # POST /brands.json
   def create
     @brand = Brand.new(brand_params)
-    binding.pry
     params[:car_id]
     respond_to do |format|
       if @brand.save
+        @brands_list = Brand.all.map{|b| [b.id, b.name]}
         format.html { redirect_to @brand, notice: 'Brand was successfully created.' }
         format.json { render :show, status: :created, location: @brand }
         format.js
@@ -82,6 +82,8 @@ class BrandsController < ApplicationController
     end
 
     def set_car
-      @car = Car.find params[:car_id]
+      if params[:car_id].present?
+        @car = Car.find params[:car_id]
+      end
     end
 end

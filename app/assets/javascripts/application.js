@@ -43,4 +43,5 @@ $(document).ready(function(){
   $('.button-collapse').sideNav({
     menuWidth: 200
   });
+  $('select').material_select();
 });

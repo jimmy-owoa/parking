@@ -4,7 +4,7 @@
 %dl.dl-horizontal
   %dt
     %strong
-      = model_class.human_attribute_name(:Car)
+      = model_class.human_attribute_name(:car)
       \:
   %dd= Brand.find_by_id(@car.brand_id).name + ' ' + @car.model
   %dt
@@ -24,9 +24,9 @@
   %dd= Owner.find_by_id(@car.owner_id).name + ' ' + Owner.find_by_id(@car.owner_id).lastname
   %dt
     %strong
-      = model_class.human_attribute_name(:phone)
+      = model_class.human_attribute_name(:annexed)
       \:
-  %dd= Owner.find_by_id(@car.owner_id).phone
+  %dd= Owner.find_by_id(@car.owner_id).annexed.name
   %h3
 = link_to "Solicitar mover vehiculo", "https://wa.me/" + Owner.find_by_id(@car.owner_id).phone[1..-1] +                                             |
   "/?text=Necesitamos%20que%20mueva%20su%20vehiculo%20" + Brand.find_by_id(@car.brand_id).name + ' ' + @car.model + "%20Patente:%20" + @car.plate + |

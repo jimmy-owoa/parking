@@ -35,9 +35,9 @@ gem 'material_icons'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "paperclip", "~> 6.0.0"
 gem 'awesome_print'
 gem 'devise'
+
 
 gem 'jquery-rails'
 
@@ -54,6 +54,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
+  gem 'i18n-debug'
 end
 
 group :development do
