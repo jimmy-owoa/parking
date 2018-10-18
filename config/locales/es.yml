@@ -52,6 +52,7 @@ es:
     submit:
       car:
         update: Actualizar
+        create: Crear
     label:
       car:
         brand_id: Marca
