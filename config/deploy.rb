@@ -2,7 +2,7 @@
 lock "~> 3.11.0"
 
 set :application, "parking"
-set :repo_url, "https://github.com/jimmy-owoa/parking"
+set :repo_url, "https://github.com/jimmy-owoa/parking.git"
 server '104.248.44.97', roles: [:web, :app, :db], primary: true
 set :user, 'deploy'
 set :puma_threads, [4,16]
