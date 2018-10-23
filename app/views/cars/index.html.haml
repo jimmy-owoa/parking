@@ -15,21 +15,10 @@
     %tr
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:plate)
-      %th= t '.actions', :default => t("helpers.actions")
-  %tbody
+      %th= t '.actions', :default => t("general.actions")
+  %tbody#cars-table
     - @cars.each do |car|
-      %tr
-        %td= link_to car.id, car_path(car)
-        %td= car.plate.upcase
-        %td
-          - if current_user.is_admin?
-            = link_to t('.show', :default => t("helpers.links.show")),
-              car_path(car), :class => 'btn btn-default btn-xs'
-            = link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_car_path(car), :class => 'btn btn-default btn-xs'
-            = link_to t('.destroy', :default => t("helpers.links.destroy")),
-              car_path(car),
-              :method => :delete,
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-xs btn-danger'
+      = render 'car_row', car: car
   = will_paginate @cars
+
+.modal.modal-fixed-footer#new-car
