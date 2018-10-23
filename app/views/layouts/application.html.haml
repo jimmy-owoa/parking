@@ -40,7 +40,7 @@
           %ul.nav-mobile.right.hide-on-med-and-down
     %main.container= yield
     - if current_user.is_admin?
-      = link_to [:new, model_class.to_s.underscore.to_sym], class: "btn-floating btn-large btn-android waves-effect waves-light" do
+      = link_to [:new, model_class.to_s.underscore.to_sym], class: "btn-floating btn-large btn-android waves-effect waves-light", remote: true do
         = material_icon.add
     = javascript_include_tag "application"
     %script{:crossorigin => "anonymous", :integrity => "sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49", :src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"}

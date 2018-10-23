@@ -24,6 +24,10 @@ class CarsController < ApplicationController
   # GET /cars/new
   def new
     @car = Car.new
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   # GET /cars/1/edit
@@ -39,9 +43,11 @@ class CarsController < ApplicationController
       if @car.save
         format.html { redirect_to @car, notice: 'Car was successfully created.' }
         format.json { render :show, status: :created, location: @car }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @car.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

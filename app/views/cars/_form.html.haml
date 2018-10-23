@@ -1,40 +1,38 @@
-= form_for @car, :html => { :class => "form-horizontal car" } do |f|
-  - if @car.errors.any?
-    #error_expl.panel.panel-danger
-      .panel-heading
-        %h3.panel-title
-          = pluralize(@car.errors.count, "error")
-          prohibited this car from being saved:
-      .panel-body
-        %ul
-          - @car.errors.full_messages.each do |msg|
-            %li= msg
-  .form-group
-    = f.label :plate, :class => 'control-label col-lg-2'
-    .col-lg-10
-      = f.text_field :plate, :class => 'form-control'
-  .form-group
-    = f.label :color, :class => 'control-label col-lg-2'
-    .col-lg-10
-      = f.text_field :color, :class => 'form-control'
-  .form-group
-    = f.label :owner_id, :class => 'control-label col-lg-2'
-    .col-lg-10
-      = f.select :owner_id, options_for_select(Owner.all.map{|i| [i.name + ' '+i.lastname, i.id]}), :class => 'form-control'
-  .form-group
-    = f.label :brand_id, :class => 'control-label col-lg-2'
-    .col-lg-10
-      = f.select :brand_id, options_for_select(Brand.all.map{|i| [i.name, i.id]}), :class => 'form-control'
-      - if @car.id.present?
-        = link_to "Crear Marca", new_car_brand_path(@car), remote: true
-      - else
-        = link_to "Crear Marca", new_brand_path(), remote: true
-  .form-group
-    = f.label :model, :class => 'control-label col-lg-2'
-    .col-lg-10
-      = f.text_field :model, :class => 'form-control'
-  .form-group
-    .col-lg-offset-2.col-lg-10
-      = f.submit nil, :class => 'btn btn-primary'
-      = link_to t('.cancel', :default => t("helpers.links.cancel")),
-        cars_path, :class => 'btn btn-default'
+- _owner_options = owner_options
+- _brand_options = brand_options
+= form_for @car, :html => { :class => "form-horizontal car" }, remote: true do |f|
+  .modal-content
+    .row
+      %h4= header_modal_form
+      - if @car.errors.any?
+        #error_expl.panel.panel-danger
+          .panel-heading
+            %h3.panel-title
+              = pluralize(@car.errors.count, "error")
+              prohibited this car from being saved:
+          .panel-body
+            %ul
+              - @car.errors.full_messages.each do |msg|
+                %li= msg
+      .input-field.col.s12.m12.l6.xl6
+        = f.text_field :plate, :class => 'validate'
+        = f.label :plate
+      .input-field.col.s12.m12.l6.xl6
+        = f.text_field :color, :class => 'validate'
+        = f.label :color
+      .input-field.col.s12.m12.l6.xl6
+        = f.select :owner_id, options_for_select(_owner_options)
+        = f.label :owner_id, class: 'activate'
+        - if _owner_options.blank?
+          = link_to t("helpers.links.create", model: Owner.model_name.human), new_owner_path
+      .input-field.col.s12.m12.l6.xl6
+        = f.select :brand_id, options_for_select(_brand_options)
+        = f.label :brand_id, :class => 'activate'
+        - if _brand_options.blank?
+          = link_to t("helpers.links.create", model: Brand.model_name.human), new_brand_path
+      .input-field.col.s12
+        = f.text_field :model, :class => 'validate'
+        = f.label :model
+  .modal-footer
+    %a.modal-action.modal-close.waves-effect.waves-green.btn-flat= t('.cancel', :default => t("helpers.links.cancel"))
+    = f.submit nil, :class => 'modal-action waves-effect waves-green btn-flat'

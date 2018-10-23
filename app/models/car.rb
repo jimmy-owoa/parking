@@ -2,6 +2,7 @@ class Car < ApplicationRecord
   belongs_to :owner
   belongs_to :brand
 
+  validates_presence_of :plate, :model
 
   def api_json
     {

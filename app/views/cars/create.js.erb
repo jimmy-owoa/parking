@@ -1,0 +1,9 @@
+<% if @car.errors.any? %>
+  <% @car.errors.full_messages.each do |msg| %>
+    Materialize.toast("<%= msg %>", 1500, "red");
+  <% end %>
+<% else %>
+  $("tbody#cars-table").append("<%= j render(partial: 'car_row', car: @car) %>");
+  $("#new-car").modal('close');
+  Materialize.toast("<%= t('general.successfullyCreated', model: Car.model_name.human) %>", 1500, 'green');
+<% end %>
