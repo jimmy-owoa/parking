@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'materialize-sass'
+gem 'materialize-sass', '~> 1.0.0'
 
 gem 'material_icons'
 # Use ActiveStorage variant
