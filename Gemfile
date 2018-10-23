@@ -37,6 +37,7 @@ gem 'material_icons'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'awesome_print'
 gem 'devise'
+gem 'pkg-config'
 
 gem 'jquery-rails'
 
