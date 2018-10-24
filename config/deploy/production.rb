@@ -32,7 +32,7 @@
 # Feel free to add new variables to customise your setup.
 set :stage, :production
 set :rails_env, :production
-server '104.248.44.97', user: 'deploy', roles: %w{web app db}, primary: true
+server '68.183.26.100', user: 'deploy', roles: %w{web app db}, primary: true
 
 
 # Custom SSH Options
