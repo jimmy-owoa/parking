@@ -1,9 +1,14 @@
+var instance = M.Modal.getInstance($("#new-car"));
 <% if @car.errors.any? %>
   <% @car.errors.full_messages.each do |msg| %>
-    Materialize.toast("<%= msg %>", 1500, "red");
+    M.toast({html: "<%= msg %>", displayLength: 1500, classes: "red"});
   <% end %>
 <% else %>
   $("tbody#cars-table").append("<%= j render(partial: 'car_row', car: @car) %>");
-  $("#new-car").modal('close');
-  Materialize.toast("<%= t('general.successfullyCreated', model: Car.model_name.human) %>", 1500, 'green');
+  instance.close();
+  M.toast({
+    html: "<%= t('general.successfullyCreated', model: Car.model_name.human) %>",
+    displayLength: 1500,
+    classes: 'green'
+  });
 <% end %>

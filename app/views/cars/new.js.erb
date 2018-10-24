@@ -1,4 +1,5 @@
-$("#new-car").modal();
-$("#new-car").html("<%= j render(partial: 'form') %>");
-$('select').material_select();
-$("#new-car").modal('open');
+var element = $("#new-car");
+element.html("<%= j render(partial: 'form') %>");
+var instance = M.Modal.getInstance(element);
+$('select').formSelect();
+instance.open();

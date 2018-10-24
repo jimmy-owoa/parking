@@ -26,8 +26,7 @@ $(document).ready(function(){
     },
     minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
   });
-  $('.button-collapse').sideNav({
-    menuWidth: 200
-  });
-  $('select').material_select();
+  $('.sidenav').sidenav();
+  $('select').formSelect();
+  $('.modal').modal();
 });
