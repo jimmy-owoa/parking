@@ -1,5 +1,6 @@
+$('.modal').modal();
 var element = $("#new-car");
 element.html("<%= j render(partial: 'form') %>");
 var instance = M.Modal.getInstance(element);
 $('select').formSelect();
-instance.open();
+element.modal('open');
