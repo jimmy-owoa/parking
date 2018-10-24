@@ -3,9 +3,13 @@ class User < ApplicationRecord
   # , :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :rememberable, :validatable
 
-  enum user_type: [:normal, :admin]
+  enum user_type: [:normal, :admin, :boss]
 
   def is_admin?
     self.admin?
+  end
+
+  def is_boss?
+    self.boss?
   end
 end

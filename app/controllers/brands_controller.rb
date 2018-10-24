@@ -1,6 +1,7 @@
 class BrandsController < ApplicationController
   before_action :set_brand, only: [:show, :edit, :update, :destroy]
   before_action :set_car, only: [:create, :new]
+  load_and_authorize_resource
 
   # GET /brands
   # GET /brands.json

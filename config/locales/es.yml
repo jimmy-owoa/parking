@@ -32,9 +32,18 @@
 es:
   activerecord:
     models:
-      car: Vehículo
-      annexed: Anexo
-      owner: Dueño
+      car: 
+        one: Auto
+        other: Autos
+      annexed: 
+        one: Anexo
+        other: Anexos
+      owner: 
+        one: Dueño
+        other: Dueños
+      brand:
+        one: Marca
+        other: Marcas
     attributes:
       car:
         plate: Patente
