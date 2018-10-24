@@ -8,6 +8,7 @@ set :user, 'deploy'
 set :puma_threads, [4,16]
 set :puma_workers, 0
 
+set :rbenv_map_bins, %w{rake gem bundle ruby rails puma pumactl}
 set :pty,             true
 set :use_sudo,        false
 set :stage,           :production
@@ -23,6 +24,8 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 set :rbenv_ruby, '2.5.1'
+set_if_empty :puma_restart_command, 'bundle exec puma'
+
 
 
 set :branch,        :master
