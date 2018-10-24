@@ -11,7 +11,7 @@
     = csrf_meta_tags
   %body
     #modal_new_car.modal
-    %ul#slide-out.side-nav.fixed
+    %ul#slide-out.sidenav.sidenav-fixed
       %li
         .user-view
           .background.teal.lighten-1
@@ -35,7 +35,7 @@
     %header
       %nav
         .nav-wrapper
-          %a.button-collapse{:"data-activates" => "slide-out"}
+          %a.sidenav-trigger{:"data-target"=>"slide-out"}
             %i.material-icons menu
           = link_to model_class.model_name.human(count: 2), model_class, class: 'brand-logo'
           %ul.nav-mobile.right.hide-on-med-and-down
