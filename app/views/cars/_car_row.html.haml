@@ -8,7 +8,7 @@
         %i.material-icons.left remove_red_eye
         %span.hide-on-med-and-down= t('.show', :default => t("helpers.links.show"))
     - if can? :edit, car
-      = link_to edit_car_path(car), :class => 'waves-effect waves-light btn' do
+      = link_to edit_car_path(car), :class => 'waves-effect waves-light btn', remote: true do
         %i.material-icons.left edit
         %span.hide-on-med-and-down= t('.edit', :default => t("helpers.links.edit"))
     - if can? :destroy, car    

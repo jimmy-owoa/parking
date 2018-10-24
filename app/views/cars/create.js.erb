@@ -1,4 +1,4 @@
-var instance = M.Modal.getInstance($("#new-car"));
+var instance = M.Modal.getInstance($("#form-car"));
 <% if @car.errors.any? %>
   <% @car.errors.full_messages.each do |msg| %>
     M.toast({html: "<%= msg %>", displayLength: 1500, classes: "red"});

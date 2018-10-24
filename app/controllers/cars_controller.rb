@@ -33,6 +33,10 @@ class CarsController < ApplicationController
 
   # GET /cars/1/edit
   def edit
+    respond_to do |format|
+      format.js
+      format.html
+    end 
   end
 
   # POST /cars
