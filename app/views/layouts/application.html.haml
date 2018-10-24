@@ -21,14 +21,8 @@
               = current_user.name
             %span.white-text.email
               = current_user.email
-      %li
-        = link_to 'Cars', cars_path
-      %li
-        = link_to 'Owners', owners_path
-      %li
-        = link_to 'Brands', brands_path
-      %li
-        = link_to 'Annexeds', annexeds_path
+      - models_to_sidenav.each do |model|
+        %li= link_to model.model_name.human, model
       %li
         = link_to 'Sign out', destroy_user_session_path, method: :delete
     %header
@@ -39,7 +33,7 @@
           = link_to model_class.model_name.human(count: 2), model_class, class: 'brand-logo'
           %ul.nav-mobile.right.hide-on-med-and-down
     %main.container= yield
-    - if current_user.is_admin?
+    - if can? :create, model_class
       = link_to [:new, model_class.to_s.underscore.to_sym], class: "btn-floating btn-large btn-android waves-effect waves-light", remote: true do
         = material_icon.add
     = javascript_include_tag "application"

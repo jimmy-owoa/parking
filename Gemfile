@@ -48,6 +48,8 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'gon'
 gem 'rabl-rails'
 
+gem 'cancancan', '~> 2.0'
+
 
 
 group :development, :test do

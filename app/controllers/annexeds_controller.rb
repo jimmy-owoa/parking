@@ -1,5 +1,6 @@
 class AnnexedsController < ApplicationController
   before_action :set_annexed, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /annexeds
   # GET /annexeds.json
